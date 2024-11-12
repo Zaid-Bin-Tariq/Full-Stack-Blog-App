@@ -33,38 +33,34 @@ export default function Post() {
   };
 
   return post ? (
-    <div className="ml-24 py-8 text-orange-950">
+    <div className="py-8 text-orange-950">
       <Container>
-        <div className="w-3/4 mt-4 flex flex-col mb-16 ml-[-100px] relative">
-          <div className="flex items-center mb-6 justify-between mx-2">
-            <div>
-              <h1 className="text-4xl font-bold">{post.title}</h1>
-            </div>
-            <div>
-            {isAuthor && (
-              <div className="text-xs">
-                <Link to={`/edit-post/${post.$id}`}>
-                  <Button bgColor="bg-green-800" className="mr-3">
-                    Edit
-                  </Button>
-                </Link>
-                <Button bgColor="bg-red-800" onClick={deletePost}>
-                  Delete
-                </Button>
-              </div>
-            )}
-            </div>
-          </div>
+        <div className="w-full md:w-3/4 md:mt-4 mt-2 flex flex-col mb-6 relative">
+          <h1 className="text-4xl font-bold mb-3 ml-0">{post.title}</h1>
+
           <img
             src={appwriteService.getFilePreview(post.featuredImage)}
             alt={post.title}
-            className="border-2 border-orange-950 w-full"
+            className="md:border-2 border-orange-950 w-full mb-2"
           />
+          <div className="md:w-3/4 md:mx-auto">
+            <h2 className="text-3xl mb-2 font-bold ">{post.description}</h2>
+            <div className="w-full browser-css mb-8">{parse(post.content)}</div>
+          </div>
         </div>
-        <div><h2 className="text-3xl mb-6 font-bold">{post.description}</h2></div>
-
-        <div className="w-2/3 browser-css mb-8">
-          {parse(post.content)}
+        <div className="mb-0">
+          {isAuthor && (
+            <div>
+              <Link to={`/edit-post/${post.$id}`}>
+                <Button bgColor="bg-green-800" className="mr-1 md:mr-3">
+                  Edit
+                </Button>
+              </Link>
+              <Button bgColor="bg-red-800" onClick={deletePost}>
+                Delete
+              </Button>
+            </div>
+          )}
         </div>
       </Container>
     </div>

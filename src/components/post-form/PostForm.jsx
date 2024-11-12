@@ -20,6 +20,8 @@ export default function PostForm({ post }) {
 
   const navigate = useNavigate();
   const userData = useSelector((state) => state.auth.userData);
+  console.log(userData);
+  
 
   const submit = async (data) => {
     if (post) {
@@ -83,7 +85,7 @@ export default function PostForm({ post }) {
       onSubmit={handleSubmit(submit)}
       className="flex flex-wrap flex-col items-center"
     >
-      <div className="w-2/3 px-2">
+      <div className="w-full md:w-2/3 px-2">
         <Input
           label="Title :"
           placeholder="Title"

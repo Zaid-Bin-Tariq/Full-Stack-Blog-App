@@ -31,9 +31,9 @@ function Home() {
     return (
         <div className='w-full py-8'>
             <Container>
-                <div className='flex flex-wrap gap-4 p-8'>
+                <div className='flex flex-col gap-4 md:py-12 py-4 md:flex-row md:flex-wrap md:p-8'>
                     {posts.map((post) => (
-                        <div key={post.$id} className='w-1/4'>
+                        <div key={post.$id} className='w-full md:w-1/4'>
                             <PostCard {...post} />
                         </div>
                     ))}
